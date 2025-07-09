@@ -10,8 +10,12 @@ import pandas as pd
 cities = pd.read_csv("cities.csv", on_bad_lines="skip", delimiter=";")
 geolocator = Nominatim(user_agent="my_geopy_app")
 
-REF_COORDS = (55.68004068027785, 12.574885137312116)
 
+##     CHANGE THESE COORDINATES TO THE LOCATION YOU WANT TO USE AS A REFERENCE POINT   ##
+#########################################################################################
+REF_COORDS = (55.68004068027785, 12.574885137312116)
+#########################################################################################
+# This is set to a location in Copenhagen, Denmark (a bar called Farfars)
 us_state_to_abbrev = {
     "Alabama": "AL",
     "Alaska": "AK",
@@ -235,7 +239,7 @@ class CityGameUI:
             else:
                 self.log_text.insert(tk.END, percent_str.ljust(8))
 
-            # Final: insert average
+            #insert average
             self.log_text.insert(tk.END, avg_field + "\n", "bold")
             self.log_text.see(tk.END)
             self.avg_label.config(text=f"Average % difference: {currentp:.2f}%")
