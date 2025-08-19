@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import time
 
-cities = pd.read_csv("cities.csv", on_bad_lines="skip", delimiter=";")
+cities = pd.read_csv("cities_modified.csv", on_bad_lines="skip", delimiter=";")
 geolocator = Nominatim(user_agent="my_geopy_app")
 
 def citygame():
@@ -17,7 +17,7 @@ def citygame():
     while not stop:
         # Choose a random city
         n = np.random.randint(0, len(cities))
-        # n = 17098 # Fixed index for testing purposes
+        # n = 376 # Fixed index for testing purposes
         city_name = cities.iloc[n, 1]
         country = cities.iloc[n, 7]
         coord_str = cities.iloc[n, -1]
