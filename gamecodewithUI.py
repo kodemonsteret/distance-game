@@ -186,14 +186,27 @@ class CityGameUI:
         )
         self.log_text.insert(tk.END, header, "bold")
 
+        # Add "Show Map" button here
+        def show_map():
+            map_frame.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True, padx=2, pady=2)
+
+        show_map_btn = tk.Button(left_frame, text="Show Map", command=show_map)
+        show_map_btn.pack(pady=5)
         # ----- BOTTOM: MAP -----
         map_frame = tk.Frame(right_frame)
         map_frame.pack(side=tk.TOP, fill=tk.BOTH, expand=True, padx=0, pady=0)  # bottom part
 
+        # Add hide button inside the map frame (top-left corner)
+        hide_button = tk.Button(left_frame, text="Hide", command=lambda: map_frame.pack_forget())
+        hide_button.pack(pady=5)
+        
         # Empty map first
         self.fig = make_plot()  
         self.canvas = FigureCanvasTkAgg(self.fig, master=map_frame)
         self.canvas.get_tk_widget().pack(side=tk.BOTTOM,fill=tk.BOTH, expand=False)
+
+        map_frame.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True, padx=2, pady=2)
+
         # --- GAME STATE ---
         self.diffs = []
         self.pdiffs = []
